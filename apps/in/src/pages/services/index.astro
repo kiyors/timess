@@ -1,0 +1,91 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ServicesGrid from "@/components/home/services-grid.astro";
+import AnimatedUnderline from "@/components/site/animated-underline";
+import CtaBand from "@/components/site/cta-band.astro";
+import { ArrowIcon, Container, Eyebrow } from "@/components/site/primitives";
+import SectionHead from "@/components/site/section-head.astro";
+import Reveal from "@/components/site/reveal";
+import { SERVICE_GROUPS, SERVICES } from "@/data/site";
+
+const title = "Services";
+const description = "Social and influencer marketing, content and brand systems, web and software builds, B2B growth and Gen-AI campaigns — grouped around the outcome your business needs.";
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <section class="pt-[clamp(7rem,14vw,10rem)] pb-[clamp(2rem,5vw,3.5rem)]">
+    <Container>
+      <Eyebrow>Services</Eyebrow>
+      <h1 class="mt-5 max-w-[16ch] text-5xl leading-[0.98] tracking-[-0.03em]">
+        Built around your outcome, not our org chart.
+      </h1>
+      <p class="mt-6 max-w-[52ch] text-xl leading-normal text-muted-foreground">
+        Start with what your business needs. Every service below is run in-house, by the same team that will sit in
+        the room with you.
+      </p>
+    </Container>
+  </section>
+
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <div class="grid gap-4">
+        {SERVICE_GROUPS.map((group, i) => (
+          <Reveal delay={(i % 3) as 0 | 1 | 2} client:visible>
+            <div class="grid gap-4 rounded-[22px] border bg-card p-[clamp(1.6rem,4vw,2.4rem)] md:grid-cols-[1fr_auto] md:items-start">
+              <div class="grid gap-2.5">
+                <span class="font-mono text-xs tracking-[0.14em] text-brand uppercase">{group.n}</span>
+                <h2 class="text-3xl leading-[1.05]">{group.title}</h2>
+                <p class="max-w-[62ch] text-muted-foreground">{group.desc}</p>
+              </div>
+              <div class="flex flex-wrap gap-2 md:max-w-[300px] md:justify-end">
+                {group.href && (
+                  <a
+                    href={group.href}
+                    class="group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-400 ease-smooth hover:-translate-y-0.5 hover:border-ink"
+                  >
+                    AI Solutions <ArrowIcon />
+                  </a>
+                )}
+                {group.slugs.map((slug) => {
+                  const service = SERVICES.find((s) => s.slug === slug);
+                  return service ? (
+                    <a
+                      href={`/services/${slug}`}
+                      class="group inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-400 ease-smooth hover:-translate-y-0.5 hover:border-ink"
+                    >
+                      {service.title} <ArrowIcon />
+                    </a>
+                  ) : null;
+                })}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <SectionHead eyebrow="All services" title="The full list, in detail." />
+      </Reveal>
+      <Reveal delay={1} client:visible>
+        <ServicesGrid />
+      </Reveal>
+      <Reveal className="mt-[clamp(3rem,7vw,5rem)]" client:visible>
+        <CtaBand
+          eyebrow="Not sure where to start?"
+          
+          ctaLabel="Start a conversation"
+        >
+  <Fragment slot="title">
+              Tell us the goal.
+              <br />
+              <AnimatedUnderline className="text-amber">We&rsquo;ll map the route.</AnimatedUnderline>
+            </Fragment>
+</CtaBand>
+      </Reveal>
+    </Container>
+  </section>
+</Layout>

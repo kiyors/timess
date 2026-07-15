@@ -1,0 +1,36 @@
+---
+import { CtaLink, Eyebrow, SectionWatermark } from "@/components/site/primitives";
+import SplitReveal from "@/components/site/split-reveal";
+
+interface Props {
+  eyebrow: string;
+  lead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  variant?: "amber" | "primary";
+}
+
+const {
+  eyebrow,
+  lead,
+  ctaLabel = "Book a meeting",
+  ctaHref = "/contact",
+  variant = "amber",
+} = Astro.props;
+
+const watermark = eyebrow.match(/^(\d{2})/)?.[1];
+---
+
+<div class="relative overflow-hidden rounded-[22px] bg-ink p-[clamp(2.4rem,7vw,4.6rem)] text-white after:absolute after:-top-[40%] after:-right-[10%] after:h-[180%] after:w-3/5 after:bg-[radial-gradient(circle,rgba(57,82,153,.5),transparent_60%)] after:content-['']">
+  <div class="relative z-1 grid max-w-[60ch] gap-6">
+    {watermark && <SectionWatermark number={watermark} onDark />}
+    <Eyebrow onDark>{eyebrow}</Eyebrow>
+    <SplitReveal className="text-4xl leading-[0.98] tracking-[-0.03em] text-white" client:visible>
+      <slot name="title" />
+    </SplitReveal>
+    {lead && <p class="max-w-[52ch] text-xl leading-normal text-white/75">{lead}</p>}
+    <CtaLink href={ctaHref} variant={variant} className="justify-self-start">
+      {ctaLabel}
+    </CtaLink>
+  </div>
+</div>

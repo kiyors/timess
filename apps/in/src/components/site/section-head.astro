@@ -1,0 +1,40 @@
+---
+import { Eyebrow, SectionWatermark } from "@/components/site/primitives";
+import Reveal from "@/components/site/reveal";
+import SplitReveal from "@/components/site/split-reveal";
+
+interface Props {
+  eyebrow: string;
+  title?: string;
+  lead?: string;
+  onDark?: boolean;
+  className?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  lead,
+  onDark = false,
+  className = "",
+} = Astro.props;
+
+const watermark = eyebrow.match(/^(\d{2})/)?.[1];
+---
+
+<div class={`relative z-0 mb-[clamp(2.5rem,6vw,4rem)] max-w-[60ch] ${className}`}>
+  {watermark && <SectionWatermark number={watermark} onDark={onDark} />}
+  <Reveal client:visible>
+    <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow>
+  </Reveal>
+  <SplitReveal className="mt-4 text-4xl leading-[0.98] tracking-[-0.03em]" client:visible>
+    {title ? title : <slot name="title" />}
+  </SplitReveal>
+  {lead && (
+    <Reveal delay={1} client:visible>
+      <p class={`mt-5 text-xl leading-normal ${onDark ? "text-white/75" : "text-muted-foreground"}`}>
+        {lead}
+      </p>
+    </Reveal>
+  )}
+</div>

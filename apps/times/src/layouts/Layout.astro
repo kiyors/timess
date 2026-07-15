@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Welcome to The Indiefluence Times—where stories are weighed, words are chosen, and ideas take the front page." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- We are using Arial/Helvetica for headers (system fonts), Playfair Display for serif body, and Irish Grover for Aladdin News -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Irish+Grover&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="/assets/cUlSJcqfrd6XueKSsuJiepWQk.png" />
+  </head>
+  <body class="bg-[#f4f4ea] bg-[url('/assets/DFovMU4gpTIHYNXz6zh17SR5OM.png')] text-black font-sans antialiased overflow-x-hidden min-h-screen">
+    <slot />
+  </body>
+</html>

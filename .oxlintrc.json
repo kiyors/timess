@@ -1,0 +1,47 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "import"],
+  "categories": {},
+  "env": {
+    "builtin": true
+  },
+  "settings": {
+    "react": {
+      "version": "19.2.7"
+    },
+    "tailwindcss": {
+      "callees": ["clsx", "cva", "cn"]
+    }
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    ".next-doc/",
+    ".direnv/",
+    ".claude/",
+    ".agents/",
+    ".impeccable/",
+    ".astro/",
+    ".next/",
+    ".source/"
+  ],
+  "rules": {
+    "prefer-arrow-callback": "error",
+    "no-unsafe-finally": "warn",
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-unused-vars": "off",
+    "no-eval": "error",
+    "prefer-const": "error",
+    "eqeqeq": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-namespace": "error",
+    "no-var": "error",
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "@typescript-eslint/no-extra-non-null-assertion": "error",
+    "no-shadow-restricted-names": "error",
+    "@typescript-eslint/no-unsafe-declaration-merging": "error",
+    "getter-return": "error",
+    "no-debugger": "warn"
+  }
+}

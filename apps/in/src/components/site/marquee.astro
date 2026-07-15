@@ -1,0 +1,21 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  items: string[];
+  className?: string;
+}
+
+const { items, className } = Astro.props;
+const loopItems = [...items, ...items];
+---
+
+<div aria-hidden="true" class={cn("overflow-hidden whitespace-nowrap border-y bg-ink py-3.5 text-white", className)}>
+  <div class="inline-flex animate-marquee motion-reduce:animate-none">
+    {loopItems.map((item) => (
+      <span class="inline-flex items-center px-6 font-mono text-sm uppercase tracking-[0.16em] after:ml-12 after:text-xs after:text-amber after:content-['✦']">
+        {item}
+      </span>
+    ))}
+  </div>
+</div>

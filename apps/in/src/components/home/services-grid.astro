@@ -1,0 +1,22 @@
+---
+import { ArrowIcon } from "@/components/site/primitives";
+import { SERVICES } from "@/data/site";
+---
+
+<div class="grid grid-cols-1 gap-px overflow-hidden rounded-[22px] border bg-border sm:grid-cols-2 lg:grid-cols-4">
+  {SERVICES.map((service) => (
+    <a
+      href={`/services/${service.slug}`}
+      class="group relative grid min-h-[190px] content-start gap-2.5 bg-card p-[clamp(1.4rem,3.4vw,2rem)] transition-colors duration-400 ease-smooth hover:bg-ink hover:text-white"
+    >
+      <span class="font-mono text-xs tracking-[0.14em] text-muted-foreground transition-colors group-hover:text-white/70">
+        {service.n}
+      </span>
+      <h3 class="max-w-[12ch] text-3xl leading-[1.05]">{service.title}</h3>
+      <p class="text-base text-muted-foreground transition-colors group-hover:text-white/70">{service.desc}</p>
+      <span class="absolute top-[clamp(1.4rem,3.4vw,2rem)] right-[clamp(1.4rem,3.4vw,2rem)] transition-all duration-500 ease-smooth group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber">
+        <ArrowIcon className="group-hover:translate-x-0" />
+      </span>
+    </a>
+  ))}
+</div>

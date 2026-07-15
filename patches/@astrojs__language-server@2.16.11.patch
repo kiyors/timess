@@ -1,0 +1,16 @@
+diff --git a/dist/check.js b/dist/check.js
+index 1d1e33896a0e55251d167132f4f5943eb48103f3..69630b14e98e5de373e32e240881fa467d3c2771 100644
+--- a/dist/check.js
++++ b/dist/check.js
+@@ -159,8 +159,9 @@ class AstroCheck {
+             return tsconfig;
+         }
+         const searchPath = this.workspacePath;
+-        const tsconfig = this.ts.findConfigFile(searchPath, this.ts.sys.fileExists) ||
+-            this.ts.findConfigFile(searchPath, this.ts.sys.fileExists, 'jsconfig.json');
++        const fileExists = this.ts.sys ? this.ts.sys.fileExists : (0, node_fs_1.existsSync);
++        const tsconfig = this.ts.findConfigFile(searchPath, fileExists) ||
++            this.ts.findConfigFile(searchPath, fileExists, 'jsconfig.json');
+         return tsconfig;
+     }
+ }

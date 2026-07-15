@@ -1,0 +1,31 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import BlogCard from "@/components/BlogCard.astro";
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => {
+  if (!a.data.date || !b.data.date) return 0;
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+});
+
+const title = "Blog";
+const description = "Thoughts, ideas, and stories from our team.";
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <div class="container py-12 md:py-24 lg:py-32 max-w-5xl mx-auto">
+    <div class="flex flex-col items-center gap-4 text-center mb-16">
+      {/* <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">Blog</h1> */}
+      <p class="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+        {description}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {posts.map((post) => (
+        <BlogCard key={post.id} post={post} />
+      ))}
+    </div>
+  </div>
+</Layout>

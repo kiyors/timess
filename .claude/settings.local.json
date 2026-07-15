@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/gaurav/workspace/indiefluence status --short)",
+      "Bash(pnpm build *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(pnpm check *)",
+      "Bash(pnpm format *)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm exec *)",
+      "Bash(pnpm dev *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3111/)",
+      "Bash(python3 -c \"import websocket; print\\('ws ok'\\)\")",
+      "Bash(python3 -c \"import asyncio, json; print\\('stdlib ok'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(PYTHONPATH=/private/tmp/claude-501/-Users-gaurav-workspace-indiefluence/de224631-cd58-451c-8a3b-700a253e0543/scratchpad/pylib python3 -c \"import websocket; print\\('ws ok'\\)\")",
+      "Bash(PYTHONPATH=./pylib python3 shot360.py)",
+      "Bash(sed -i '' 's/\"--remote-debugging-port={PORT}\", \"--user-data-dir/\"--remote-debugging-port={PORT}\", \"--remote-allow-origins=*\", \"--user-data-dir/' shot360.py)",
+      "Bash(sed -i '' 's|f\"--remote-debugging-port={PORT}\"|f\"--remote-debugging-port={PORT}\", \"--remote-allow-origins=*\"|' shot360.py)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"next dev --port 3111\")",
+      "Bash(pnpm remove *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(python3 -c ' *)",
+      "Bash(pnpm add *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(v['gifPreview']\\) for v in d['videosWithGifs']]\")",
+      "Bash(/bin/ls /Users/gaurav/workspace/indiefluence/build/index.html /Users/gaurav/workspace/indiefluence/build/work/pawgloo/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3111/)",
+      "Bash(set -o pipefail)",
+      "Bash(echo \"BUILD_EXIT=$?\")",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"next-server\")",
+      "Bash(PYTHONPATH=./pylib python3 scroll_shot.py)",
+      "Bash(sed -i '' 's/\\(\"studioreel-360\", \"\\\\/\", 0.72, True\\)/\\(\"studioreel-360\", \"\\\\/\", 0.6, True\\)/' scroll_shot.py)",
+      "Bash(sed -i '' 's/\\(\"manifesto-mid-360\", \"\\\\/\", 0.42, True\\)/\\(\"clientwall-360\", \"\\\\/\", 0.85, True\\)/' scroll_shot.py)",
+      "Bash(sed -i '' 's/time.sleep\\(2.2\\)/time.sleep\\(4.0\\)/' scroll_shot.py)"
+    ]
+  }
+}

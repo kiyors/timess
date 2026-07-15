@@ -1,0 +1,35 @@
+packages:
+  - "apps/*"
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+minimumReleaseAge: 4320
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - chokidar@4.0.3
+  - semver@6.3.1
+minimumReleaseAgeExclude:
+  - "@bruits/*"
+  - "@oxfmt/*"
+  - "@oxlint/*"
+  - "@rolldown/*"
+  - "@typescript/*"
+  - "@types/*"
+  - "oxfmt"
+  - "oxlint"
+  - "rolldown"
+  - "typescript"
+  - "caniuse-lite"
+  - "electron-to-chromium"
+  - "lru-cache"
+  - "path-expression-matcher"
+  - "satteri"
+  - "systeminformation"
+  - "tldts-core"
+  - "tldts"
+  - "tough-cookie"
+  - "@astrojs/telemetry@3.3.3"
+  - astro@7.0.7
+patchedDependencies:
+  "@astrojs/language-server@2.16.11": patches/@astrojs__language-server@2.16.11.patch

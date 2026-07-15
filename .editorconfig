@@ -1,0 +1,15 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.js]
+
+[*.py]
+# Python-specific settings. PEP 8 recommends 4 spaces for indentation.
+indent_size = 4

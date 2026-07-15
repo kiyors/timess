@@ -1,0 +1,57 @@
+---
+import LeadForm from "@/components/home/lead-form";
+import CtaBand from "@/components/site/cta-band.astro";
+import { Container } from "@/components/site/primitives";
+import { CONTACT } from "@/data/site";
+
+interface Props {
+  eyebrow?: string;
+}
+
+const { eyebrow = "Start a conversation" } = Astro.props;
+
+const rows = [
+  { k: "Email", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
+  { k: "Phone / WhatsApp", v: CONTACT.phone, href: CONTACT.phoneHref },
+  { k: "Studio", v: CONTACT.address },
+  { k: "Serving", v: CONTACT.countries },
+];
+---
+
+<section id="contact" class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+  <Container>
+    <CtaBand
+      eyebrow={eyebrow}
+      lead="Tell us where you are and where you want to be. We'll come back with a clear, honest view of how we'd get you there."
+      ctaLabel="Book a meeting"
+      ctaHref={CONTACT.calUrl}
+    >
+      <Fragment slot="title">
+        Let&rsquo;s build something
+        <br />
+        <em class="not-italic text-amber">people remember.</em>
+      </Fragment>
+    </CtaBand>
+
+    <div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-[clamp(2.5rem,5vw,4rem)]">
+      <div class="grid content-start gap-6">
+        {rows.map((row) => (
+          <div class="grid gap-1">
+            <span class="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{row.k}</span>
+            {row.href ? (
+              <a
+                href={row.href}
+                class="font-display text-base font-medium tracking-[-0.01em] transition-colors hover:text-brand"
+              >
+                {row.v}
+              </a>
+            ) : (
+              <span class="text-muted-foreground">{row.v}</span>
+            )}
+          </div>
+        ))}
+      </div>
+      <LeadForm client:visible />
+    </div>
+  </Container>
+</section>

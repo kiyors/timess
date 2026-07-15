@@ -1,0 +1,114 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import CtaBand from "@/components/site/cta-band.astro";
+import AnimatedUnderline from "@/components/site/animated-underline";
+import { Container, CtaLink, Eyebrow } from "@/components/site/primitives";
+import Reveal from "@/components/site/reveal";
+import SplitReveal from "@/components/site/split-reveal";
+import { CONTACT } from "@/data/site";
+
+const title = "AI Solutions";
+const description = "Gen-AI video, AI-native campaigns and custom AI software, built by a team that treats the technology as a tool for the work, not a gimmick for the pitch.";
+
+const features = [
+  {
+    n: "01 — Gen-AI video & production",
+    title: "Campaign-ready video, without the shoot.",
+    body: "Concepts, scripts and finished video produced with generative tools and a human editor's eye. Ideal for testing angles quickly, localising for new markets, or producing at a volume traditional production simply can't match.",
+    points: [
+      "Retro ad recreations & cinematic reels",
+      "Product and explainer video",
+      "Multi-market, multi-language versions",
+    ],
+  },
+  {
+    n: "02 — AI-native campaigns",
+    title: "Campaigns that learn as they run.",
+    body: "We use AI to research audiences, generate and test hundreds of variants, and read what's working faster than a human team could alone, then we apply judgement to the parts that matter.",
+    points: ["Audience & angle research", "Creative variant generation & testing", "Performance analysis & iteration"],
+  },
+  {
+    n: "03 — Custom AI software & agents",
+    title: "Software that does the work, not just the demo.",
+    body: "From marketing sites to full products and internal tools. We design and build custom software, including agentic systems that automate real workflows for marketing and operations teams.",
+    points: ["Web & product engineering", "Agentic marketing systems", "Internal tools & automations"],
+  },
+  {
+    n: "04 — The honest bit",
+    title: "Where AI helps, and where it doesn't.",
+    body: "We won't put AI on a slide to look modern. Some work is faster and better with it; some still needs a person in a room. We'll always tell you which is which, and price the work accordingly.",
+    points: ["Clear on what's automated", "Human sign-off on everything shipped", "Your data, handled with care"],
+  },
+];
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <section class="bg-brand-deep pt-[clamp(7.5rem,15vw,11rem)] pb-[clamp(4.5rem,10vw,8.5rem)] text-white">
+    <Container>
+      <Reveal client:visible>
+        <Eyebrow onDark>AI Solutions</Eyebrow>
+      </Reveal>
+      <SplitReveal className="my-5 max-w-[15ch] text-5xl leading-[0.98] tracking-[-0.03em] text-white" client:visible>
+        AI, pointed at <AnimatedUnderline className="text-amber">growth.</AnimatedUnderline>
+      </SplitReveal>
+      <Reveal delay={1} client:visible>
+        <p class="max-w-[56ch] text-xl leading-normal text-white/78">
+          We build AI into the work where it earns its place: making better content faster, running smarter
+          campaigns, and shipping software that would have taken a team of ten. Here is what that looks like in
+          practice.
+        </p>
+      </Reveal>
+      <Reveal delay={2} client:visible>
+        <div class="mt-8">
+          <CtaLink href="/contact" variant="amber">
+            Talk to us about AI
+          </CtaLink>
+        </div>
+      </Reveal>
+    </Container>
+  </section>
+
+  <section class="py-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {features.map((feature, i) => (
+          <Reveal delay={(i % 2) as 0 | 1} className="h-full" client:visible>
+            <div class="grid h-full content-start gap-4 rounded-[22px] border bg-card p-[clamp(1.6rem,4vw,2.4rem)] transition-all duration-500 ease-smooth hover:-translate-y-1 hover:shadow-[0_24px_56px_-30px_rgba(20,29,59,.35)]">
+              <span class="font-mono text-xs tracking-[0.14em] text-brand uppercase">{feature.n}</span>
+              <h3 class="text-3xl leading-[1.05]">{feature.title}</h3>
+              <p class="text-base text-muted-foreground">{feature.body}</p>
+              <ul class="mt-1 grid gap-2">
+                {feature.points.map((point) => (
+                  <li class="flex items-start gap-2.5 text-base">
+                    <span aria-hidden="true" class="font-mono text-amber">
+                      →
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <CtaBand
+          eyebrow="Next step"
+          
+          ctaHref={CONTACT.calUrl}
+        >
+  <Fragment slot="title">
+              Curious what AI could do
+              <br />
+              <AnimatedUnderline className="text-amber">for your marketing?</AnimatedUnderline>
+            </Fragment>
+</CtaBand>
+      </Reveal>
+    </Container>
+  </section>
+</Layout>

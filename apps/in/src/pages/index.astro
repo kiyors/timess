@@ -1,0 +1,123 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import AiTeaser from "@/components/home/ai-teaser";
+import ClientWall from "@/components/home/client-wall.astro";
+import ContactSection from "@/components/home/contact-section.astro";
+import GrowthSystem from "@/components/home/growth-system";
+import Hero from "@/components/home/hero";
+import Manifesto from "@/components/home/manifesto";
+import Pillars from "@/components/home/pillars.astro";
+import ServicesGrid from "@/components/home/services-grid.astro";
+import StudioReel from "@/components/home/studio-reel";
+import WhoWeHelp from "@/components/home/who-we-help";
+import StructuredData from "@/components/seo/StructuredData";
+import Marquee from "@/components/site/marquee.astro";
+import { Container, CtaLink } from "@/components/site/primitives";
+import SectionHead from "@/components/site/section-head.astro";
+import Reveal from "@/components/site/reveal";
+import CaseCard from "@/components/work/case-card";
+import { CAPABILITIES, CONTACT } from "@/data/site";
+import { getWorkPages } from "@/lib/work";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Indiefluence",
+  url: "https://indiefluence.in",
+  logo: "https://indiefluence.in/assets/indiefluence-logo.svg",
+  sameAs: Object.values(CONTACT.socials),
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+91-9817742069",
+    contactType: "customer service",
+    areaServed: "IN",
+    availableLanguage: "en",
+  },
+};
+
+const allStudies = await getWorkPages();
+const studies = allStudies.slice(0, 3);
+---
+
+<Layout>
+  {/* We can safely pass jsonLd to a React component in Astro */}
+  <StructuredData data={jsonLd} />
+
+  <Hero client:load />
+
+  <Marquee items={CAPABILITIES} />
+
+  <WhoWeHelp client:visible />
+
+  <GrowthSystem client:visible />
+
+  {/* 03 — What defines us */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <SectionHead
+        eyebrow="03 — What defines us"
+        title="Marketing that starts with people, not metrics."
+        lead="Indiefluence grew from a simple belief: understand how people actually decide, and the rest of marketing gets a great deal more honest. That thinking has built brands across seven countries."
+      />
+      <Pillars />
+    </Container>
+  </section>
+
+  {/* Manifesto — pinned chapter break */}
+  <Manifesto client:visible />
+
+  {/* 04 — What we do */}
+  <section class="py-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <SectionHead eyebrow="04 — What we do" title="Penetrative content that reaches the right people." />
+      <ServicesGrid />
+    </Container>
+  </section>
+
+  {/* 05 — Selected work */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <div class="mb-[clamp(2.5rem,6vw,4rem)] flex flex-wrap items-end justify-between gap-4">
+        <SectionHead eyebrow="05 — Selected work" title="Proof, not promises." className="mb-0" />
+        <Reveal delay={1} client:visible>
+          <CtaLink href="/work" variant="ghost">
+            All case studies
+          </CtaLink>
+        </Reveal>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {studies.map((study, i) => (
+          <Reveal delay={(i % 3) as 0 | 1 | 2} client:visible>
+            <CaseCard study={study} />
+          </Reveal>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  {/* 06 — The content studio */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <SectionHead
+        eyebrow="06 — The content studio"
+        title="Made in-house. Watched everywhere."
+        lead="Reels, campaign films and Gen-AI experiments, shot and edited by the IndieTribe."
+      />
+      <StudioReel client:visible />
+    </Container>
+  </section>
+
+  {/* 07 — AI teaser */}
+  <AiTeaser client:visible />
+
+  {/* 08 — Trusted by */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <SectionHead eyebrow="08 — Trusted by" title="Brands, big and independent." />
+      <ClientWall />
+    </Container>
+  </section>
+
+  {/* 09 — Contact */}
+  <ContactSection />
+</Layout>

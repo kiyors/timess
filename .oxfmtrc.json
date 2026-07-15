@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "astro": true,
+  "quoteProps": "as-needed",
+  "trailingComma": "es5",
+  "semi": true,
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "singleAttributePerLine": false,
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.next-doc/**",
+    "**/.next/**",
+    "**/.astro/**",
+    "**/.direnv/**",
+    "**/.claude/**",
+    "**/.agents/**",
+    "**/.impeccable/**",
+    "**/.source/**",
+    "**/package-lock.json",
+    "**/pnpm-lock.yaml"
+  ]
+}

@@ -1,0 +1,92 @@
+---
+import { getImagePath } from "astro-takumi";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import SmoothScroll from "@/components/site/smooth-scroll";
+import WhatsApp from "@/components/whatsapp";
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title = "Indiefluence | Psychology-led Growth Studio", 
+  description = "Indiefluence is a psychology-led growth studio. We build brands, campaigns, content and software that move real people to act — for D2C, startups, B2B and international brands.",
+  image = "https://res.cloudinary.com/dy47yif3w/image/upload/v1756296006/indiefluence/assets/servies-img-destop/SMM_pd1d8x.webp"
+} = Astro.props;
+
+// Ensure the image URL is absolute for OG tags
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+const defaultOgImage = image.startsWith('http') ? image : new URL(image, canonicalURL).toString();
+
+// Generate dynamic Takumi OG Image path
+let ogImage = defaultOgImage;
+try {
+  const { url, site } = Astro;
+  // Use Takumi's generated image for ALL pages to satisfy its strict build requirements
+  ogImage = getImagePath({ url, site });
+} catch (e) {
+  // fallback if getImagePath fails (e.g. during certain dev scenarios)
+}
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Digital Marketing, Influencer Marketing, Social Media Strategy, B2B Marketing, Indiefluence, Growth Studio" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Indiefluence" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --font-sans: 'Inter', sans-serif;
+        --font-geist-sans: 'Inter', sans-serif;
+        --font-geist-mono: monospace;
+      }
+    </style>
+  </head>
+  <body class="antialiased flex flex-col min-h-screen bg-background text-foreground">
+    <SmoothScroll client:load />
+    
+    <div class="flex-1 flex flex-col relative">
+      <Header client:load />
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
+    
+    <WhatsApp client:only="react" />
+    <Footer />
+  </body>
+</html>

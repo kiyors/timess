@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ContactSection from "@/components/home/contact-section.astro";
+import { Container, Eyebrow } from "@/components/site/primitives";
+import Reveal from "@/components/site/reveal";
+import SplitReveal from "@/components/site/split-reveal";
+
+const title = "Contact";
+const description = "Start a conversation with Indiefluence: book a meeting, send an enquiry, or reach us directly by phone, WhatsApp or email.";
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <section class="pt-[clamp(7rem,14vw,10rem)] pb-[clamp(1rem,3vw,2rem)]">
+    <Container>
+      <Reveal client:visible>
+        <Eyebrow>Contact</Eyebrow>
+      </Reveal>
+      <SplitReveal className="mt-5 max-w-[16ch] text-5xl leading-[0.98] tracking-[-0.03em]" client:visible>
+        Tell us where you want to be.
+      </SplitReveal>
+      <Reveal delay={1} client:visible>
+        <p class="mt-6 mb-[clamp(2rem,5vw,3.5rem)] max-w-[52ch] text-xl leading-normal text-muted-foreground">
+          A sentence or two is plenty. We read everything, and we reply with a clear, honest view — not a pitch
+          deck.
+        </p>
+      </Reveal>
+    </Container>
+  </section>
+  <ContactSection eyebrow="Start a conversation" />
+</Layout>

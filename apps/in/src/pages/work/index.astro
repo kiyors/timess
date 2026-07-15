@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import CtaBand from "@/components/site/cta-band.astro";
+import AnimatedUnderline from "@/components/site/animated-underline";
+import { Container, Eyebrow } from "@/components/site/primitives";
+import Reveal from "@/components/site/reveal";
+import CaseCard from "@/components/work/case-card";
+import { getWorkPages } from "@/lib/work";
+
+const title = "Work & Case Studies";
+const description = "A closer look at how Indiefluence thinks. Each case study walks through the brief, the thinking, the work we made and where it landed.";
+
+const studies = await getWorkPages();
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <section class="pt-[clamp(7rem,14vw,10rem)] pb-[clamp(2rem,5vw,3.5rem)]">
+    <Container>
+      <Eyebrow>Case studies</Eyebrow>
+      <h1 class="mt-5 max-w-[16ch] text-5xl leading-[0.98] tracking-[-0.03em]">The work behind the results.</h1>
+      <p class="mt-6 max-w-[52ch] text-xl leading-normal text-muted-foreground">
+        A closer look at how we think. Each study walks through the brief, the thinking, the work we made and where
+        it landed.
+      </p>
+    </Container>
+  </section>
+
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {studies.map((study, i) => (
+          <Reveal delay={(i % 3) as 0 | 1 | 2} client:visible>
+            <CaseCard study={study} />
+          </Reveal>
+        ))}
+      </div>
+      <Reveal className="mt-[clamp(3rem,7vw,5rem)]" client:visible>
+        <CtaBand
+          eyebrow="Your story next"
+          
+          lead="Tell us where you are and where you want to be. We'll come back with a clear, honest view of how we'd get you there."
+        >
+  <Fragment slot="title">
+              Have a brief that looks
+              <br />
+              <AnimatedUnderline className="text-amber">like one of these?</AnimatedUnderline>
+            </Fragment>
+</CtaBand>
+      </Reveal>
+    </Container>
+  </section>
+</Layout>

@@ -1,0 +1,29 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+User-Agent: gptbot
+Allow: /
+
+User-Agent: chatgpt-user
+Allow: /
+
+User-Agent: claude-web
+Allow: /
+
+User-Agent: claudebot
+Allow: /
+
+User-Agent: anthropic-ai
+Allow: /
+
+User-Agent: perplexitybot
+Allow: /
+
+User-Agent: google-extended
+Allow: /
+
+User-Agent: bingbot
+Allow: /
+
+Sitemap: https://indiefluence.in/sitemap-index.xml

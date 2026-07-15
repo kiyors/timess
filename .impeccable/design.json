@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-14T10:33:00Z",
+  "title": "Design System: Indiefluence 2026",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Indiefluence Blue", "canonical": "#395299", "tonalRamp": ["oklch(20% 0.12 260)", "oklch(30% 0.12 260)", "oklch(40% 0.12 260)", "oklch(50% 0.12 260)", "oklch(60% 0.12 260)", "oklch(70% 0.12 260)", "oklch(85% 0.12 260)", "oklch(95% 0.12 260)"] },
+      "primary-deep": { "role": "primary", "displayName": "Deep Blue", "canonical": "#141D3B", "tonalRamp": ["oklch(10% 0.10 260)", "oklch(20% 0.10 260)", "oklch(30% 0.10 260)", "oklch(40% 0.10 260)", "oklch(50% 0.10 260)", "oklch(60% 0.10 260)", "oklch(80% 0.10 260)", "oklch(95% 0.10 260)"] },
+      "primary-hover": { "role": "primary", "displayName": "Blue Hover", "canonical": "#2C4488", "tonalRamp": ["oklch(20% 0.12 260)", "oklch(30% 0.12 260)", "oklch(40% 0.12 260)", "oklch(50% 0.12 260)", "oklch(60% 0.12 260)", "oklch(70% 0.12 260)", "oklch(85% 0.12 260)", "oklch(95% 0.12 260)"] },
+      "accent": { "role": "secondary", "displayName": "Indiefluence Yellow", "canonical": "#FBCC03", "tonalRamp": ["oklch(20% 0.16 90)", "oklch(35% 0.16 90)", "oklch(50% 0.16 90)", "oklch(60% 0.16 90)", "oklch(70% 0.16 90)", "oklch(80% 0.16 90)", "oklch(90% 0.16 90)", "oklch(98% 0.16 90)"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0E1326", "tonalRamp": ["oklch(15% 0.02 260)", "oklch(25% 0.02 260)", "oklch(35% 0.02 260)", "oklch(45% 0.02 260)", "oklch(60% 0.02 260)", "oklch(75% 0.02 260)", "oklch(85% 0.02 260)", "oklch(96% 0.02 260)"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#EFF1F8", "tonalRamp": ["oklch(15% 0.01 260)", "oklch(25% 0.01 260)", "oklch(35% 0.01 260)", "oklch(50% 0.01 260)", "oklch(65% 0.01 260)", "oklch(80% 0.01 260)", "oklch(90% 0.01 260)", "oklch(96% 0.01 260)"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#FFFFFF", "tonalRamp": ["oklch(20% 0 0)", "oklch(30% 0 0)", "oklch(45% 0 0)", "oklch(60% 0 0)", "oklch(75% 0 0)", "oklch(85% 0 0)", "oklch(95% 0 0)", "oklch(100% 0 0)"] },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#5A6178", "tonalRamp": ["oklch(25% 0.03 260)", "oklch(35% 0.03 260)", "oklch(45% 0.03 260)", "oklch(55% 0.03 260)", "oklch(65% 0.03 260)", "oklch(75% 0.03 260)", "oklch(85% 0.03 260)", "oklch(95% 0.03 260)"] }
+    },
+    "typographyMeta": {
+      "display-xl": { "displayName": "Display XL", "purpose": "Hero headlines only." },
+      "display-lg": { "displayName": "Display LG", "purpose": "Primary page or section titles." },
+      "heading-md": { "displayName": "Heading MD", "purpose": "Sub-section headings and card titles." },
+      "body-lg": { "displayName": "Body LG", "purpose": "Lead paragraphs and emphasis text." },
+      "body-md": { "displayName": "Body MD", "purpose": "Default body copy." },
+      "label": { "displayName": "Label", "purpose": "Metadata, badges, counters, and section numbers." }
+    },
+    "shadows": [
+      { "name": "hover-lift", "value": "0 4px 12px rgba(0,0,0,0.08)", "purpose": "Soft shadow for hover cards." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "360px" },
+      { "name": "desktop", "value": "1240px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA for business conversion.",
+      "html": "<button class=\"ds-btn-primary\">BOOK A MEETING</button>",
+      "css": ".ds-btn-primary { background: #0E1326; color: #FFFFFF; padding: 0.9rem 1.15rem; font-family: Inter, sans-serif; font-size: 1rem; border-radius: 999px; border: none; cursor: pointer; transition: background 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { background: #2C4488; }"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Secondary or emphasis CTA.",
+      "html": "<button class=\"ds-btn-accent\">VIEW CASE STUDY</button>",
+      "css": ".ds-btn-accent { background: #FBCC03; color: #0E1326; padding: 0.9rem 1.15rem; font-family: Inter, sans-serif; font-size: 1rem; border-radius: 999px; border: none; cursor: pointer; transition: filter 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-accent:hover { filter: brightness(0.95); }"
+    },
+    {
+      "name": "Card Container",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Standard container for case studies or services.",
+      "html": "<div class=\"ds-card\"><h3>Client Success</h3><p>We grew their audience by 300%.</p></div>",
+      "css": ".ds-card { background: #FFFFFF; color: #0E1326; padding: 1.4rem; border-radius: 22px; border: 1px solid #EFF1F8; font-family: Inter, sans-serif; font-size: 1rem; transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); } .ds-card h3 { font-family: Geist, sans-serif; font-size: 2.2rem; font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; letter-spacing: -0.02em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Psychology-Led Growth Studio",
+    "overview": "Indiefluence should feel like a 2026 growth studio that happens to understand psychology, creators, software, and AI. The site must speak to business owners, founders, and marketing teams who want a partner, not a flashy vendor.\n\nThe redesign direction is mobile-first, maximal in content and confidence, minimal in composition. This means large useful statements, dense but readable sections, strong proof, clear paths into services, and only enough motion to make the experience feel alive. It should never feel like a scam website, generic agency template, casino page, or AI gimmick landing page.\n\nGlobal Layout Philosophy:\nDesign mobile first. Every page must be excellent at 360px width before desktop refinements are added.\n- Use full-width sections with constrained inner content, not stacked decorative cards.\n- Use cards only for repeated items, case studies, service entries, and forms.\n- Keep section spacing generous but not empty: mobile sections should feel like intentional chapters.\n- Use section numbers (01, 02, 03) as orientation cues, inspired by Units and v2.\n- Use looping horizontal strips for capabilities, audience types, proof snippets, and creator/campaign categories.\n- Keep the main nav business-focused: Who we help, Work, AI Solutions, About, Contact, with Book a meeting as the primary CTA.\n- Surface contact options early and late: meeting CTA, WhatsApp/phone, email, and a short lead form.",
+    "keyCharacteristics": [
+      "Phone-first browsing and decision-making.",
+      "Confident, specific, and business-friendly tone.",
+      "Small, meaningful animations that clarify interaction or add energy without hiding content.",
+      "Honest, concrete, and founder-friendly copy."
+    ],
+    "rules": [
+      { "name": "The No Glass Rule", "body": "Avoid heavy shadows, glassmorphism everywhere, floating blobs, and decorative orbs.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do design for phone-first browsing and decision-making.",
+      "Do keep Indiefluence blue, yellow, logo, and fonts.",
+      "Do make the site feel confident, specific, and business-friendly.",
+      "Do add proof wherever possible: clients, case studies, countries served, media feature, project outputs, campaign examples.",
+      "Do use small, meaningful animations that clarify interaction or add energy.",
+      "Do keep copy honest, concrete, and founder-friendly.",
+      "Do use real client/work visuals when available; generated visuals are acceptable only when they demonstrate AI capabilities clearly."
+    ],
+    "donts": [
+      "Don't make the site look like a template marketing agency, crypto funnel, fake AI startup, or loud ad-tech page.",
+      "Don't lead only with a generic \"What we do\" service grid.",
+      "Don't overuse yellow backgrounds, spinning elements, huge shadows, or decorative particle noise.",
+      "Don't use one-note blue/purple gradients.",
+      "Don't hide core navigation inside clever interactions on mobile.",
+      "Don't create vague case studies without business context.",
+      "Don't promise guaranteed virality, guaranteed ROAS, or impossible AI outcomes.",
+      "Don't break mobile text wrapping, button sizing, or scroll readability."
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+---
+import { BrainIcon, PencilRulerIcon, TrendingUpIcon } from "lucide-react";
+
+const pillars = [
+  {
+    Icon: BrainIcon,
+    title: "Rooted in psychology",
+    body: "We design for attention, memory and trust, the things that actually make people act, rather than metrics that only look good in a report.",
+  },
+  {
+    Icon: PencilRulerIcon,
+    title: "Built with craft",
+    body: "Nothing accidental. Design, words, code and edits are all made in-house, by a team of senior talent, to a standard we are happy to put our name to.",
+  },
+  {
+    Icon: TrendingUpIcon,
+    title: "Measured on impact",
+    body: "We care about the one number that moves your business, and we are honest about what it takes to move it. No vanity, no inflated promises.",
+  },
+];
+---
+
+<div class="grid grid-cols-1 gap-px overflow-hidden rounded-[22px] border bg-border md:grid-cols-3">
+  {pillars.map((pillar) => (
+    <div class="grid h-full content-start gap-3.5 bg-paper p-[clamp(1.8rem,4vw,2.6rem)] transition-colors duration-400 ease-smooth hover:bg-card">
+      <div class="grid size-10 place-items-center rounded-[10px] bg-brand text-white">
+        <pillar.Icon className="size-5" strokeWidth={1.8} />
+      </div>
+      <h3 class="text-3xl leading-[1.05]">{pillar.title}</h3>
+      <p class="text-muted-foreground">{pillar.body}</p>
+    </div>
+  ))}
+</div>

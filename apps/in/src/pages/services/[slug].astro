@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import StructuredData from "@/components/seo/StructuredData";
+
+export async function getStaticPaths() {
+  const serviceEntries = await getCollection('services');
+  return serviceEntries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: data.title,
+  description: data.description,
+  image: data.images.desktop,
+  brand: {
+    "@type": "Brand",
+    name: "Indiefluence",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+  },
+};
+---
+
+<Layout title={`${data.title} | Indiefluence`} description={data.description} image={data.images.desktop}>
+  <StructuredData data={jsonLd} />
+  <div class="h-auto pt-24 pb-5 md:pt-32 max-w-[1400px] mx-auto px-4">
+    <picture>
+      <source media="(min-width: 1400px)" srcset={data.images.desktop} />
+      <source media="(min-width: 768px)" srcset={data.images.tablet} />
+      <img src={data.images.mobile} alt={data.title} fetchpriority="high" loading="eager" decoding="async" class="w-full h-auto rounded-lg" />
+    </picture>
+  </div>
+
+  <div class="max-w-5xl mx-auto px-4 py-8 md:py-16 text-justify md:text-left">
+    <article class="text-lg md:text-xl leading-relaxed text-muted-foreground space-y-6 prose prose-neutral max-w-none prose-p:text-muted-foreground prose-a:text-primary">
+      <Content />
+    </article>
+  </div>
+</Layout>

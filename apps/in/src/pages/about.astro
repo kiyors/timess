@@ -1,0 +1,191 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Pillars from "@/components/home/pillars.astro";
+import AnimatedUnderline from "@/components/site/animated-underline";
+import CtaBand from "@/components/site/cta-band.astro";
+import { Container, Eyebrow } from "@/components/site/primitives";
+import SectionHead from "@/components/site/section-head.astro";
+import Reveal from "@/components/site/reveal";
+
+const title = "About";
+const description = "Indiefluence is a psychology-led growth studio from Kurukshetra: how we think, how we work, and why understanding people comes before everything else.";
+
+const founders = [
+  {
+    name: "Venu Gopal Singhal",
+    role: "Founder",
+    image: "https://res.cloudinary.com/dy47yif3w/image/upload/v1756291452/indiefluence/assets/About-gif/venu_hxhwed.webp",
+    bio: [
+      "I started my journey with a degree in Computer Science Engineering because I've always loved solving problems. But for me, business is never just about logic and numbers, it's about people. I've always been fascinated by psychology and how it connects business and technology through marketing.",
+      "Entrepreneurship runs deep in my family — I'm a fourth-generation entrepreneur — and I've been designing for over 18 years. After engineering, I went to Durham University in England for my master's in marketing, where I specialised in influencer and content marketing. That course was truly one of a kind, and it shaped a lot of what I do today.",
+      "Outside of work, I'm a collector of hobbies: music, art, movies, and creating content in all forms. The only thing you'll never see me do is dance.",
+    ],
+  },
+  {
+    name: "Vrinda Singhal",
+    role: "Design & D2C",
+    image: "https://res.cloudinary.com/dy47yif3w/image/upload/v1756291453/indiefluence/assets/About-gif/viranda_x9vdes.webp",
+    bio: [
+      "Fashion and design have always been my language. I studied Fashion Technology at NIFT Gandhinagar, and that experience shaped not just my skills but the way I see the world. Today, I lead the design and D2C side of VPS Ventures, and I run House of Aerawat.",
+      "House of Aerawat is really close to my heart. It's about working with hyper-local artisans and helping their craft reach the right audience. For me, design isn't just about aesthetics — it's about creating experiences that respect culture while feeling relevant in today's world.",
+      "I've always had a strong sense of space, detail, and storytelling through design. I'm happiest when I'm creating something beautiful and meaningful.",
+    ],
+  },
+];
+
+const tribeNotes = [
+  "One of us is always munching on something — you'll hear the wrapper before you see them.",
+  "Someone's constantly trying bizarre food combos, and surprisingly, they slap.",
+  "There's a serial online shopper — new package every other day.",
+  "Someone barely speaks but is glued to the laptop, crushing deadlines in silence.",
+  "One of us dresses up like it's fashion week, even if it's a Tuesday.",
+  "There's always music playing, except for the one person who fights for the noise-cancelling headphones.",
+];
+---
+
+<Layout title={`${title} | Indiefluence`} description={description}>
+  <section class="pt-[clamp(7rem,14vw,10rem)] pb-[clamp(3rem,7vw,5rem)]">
+    <Container>
+      <Eyebrow>About Indiefluence</Eyebrow>
+      <h1 class="mt-5 max-w-[18ch] text-5xl leading-[0.98] tracking-[-0.03em]">
+        Psychology geeks who happen to run a marketing company.
+      </h1>
+      <p class="mt-6 max-w-[56ch] text-xl leading-normal text-muted-foreground">
+        Indiefluence wasn't built overnight. It began with one person in a tiny corner of a coffee shop, handling
+        everything from brand designs and social media to videos and client calls. Today it's a 25+ strong tribe of
+        creators, thinkers and doers — the IndieTribe — building brands across seven countries.
+      </p>
+    </Container>
+  </section>
+
+  {/* How we think */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <SectionHead
+          eyebrow="01 — How we think"
+          title="Understand how people decide, and marketing gets honest."
+          lead="We hate making content just for the sake of it. We make content that actually works: designed for attention, memory and trust — the things that make real people act."
+        />
+      </Reveal>
+      <Pillars />
+    </Container>
+  </section>
+
+  {/* How we work */}
+  <section class="bg-brand-deep py-[clamp(4.5rem,10vw,8.5rem)] text-white">
+    <Container>
+      <Reveal client:visible>
+        <SectionHead
+          eyebrow="02 — How we work"
+          onDark
+
+          lead="Our onboarding has a rule: no proposal before understanding. We observe a brand for a week — the product, the service, the problem statement. If we see real potential, we start digging: research, insights and draft ideas, all before a single contract."
+        >
+  <Fragment slot="title">
+            <span class="text-white">
+              We observe first.
+              <br />
+              <AnimatedUnderline className="text-amber">Then we commit.</AnimatedUnderline>
+            </span>
+          </Fragment>
+</SectionHead>
+      </Reveal>
+      <Reveal delay={1} client:visible>
+        <p class="max-w-[56ch] text-base leading-relaxed text-white/78">
+          Only when we believe we can bring something visionary do we reach out with a handshake — a handshake that
+          stands for a partnership that will make a difference in the way we do business. That's how we've partnered
+          with 80+ clients, from emerging startups to brands like LG, Royal Enfield, Renault, GoldStar, Genesis
+          Classes and MYRO.
+        </p>
+      </Reveal>
+    </Container>
+  </section>
+
+  {/* Founders */}
+  <section class="py-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <SectionHead eyebrow="03 — The founders" title="Yep, we turn the 'what ifs' into 'look at this'." />
+      </Reveal>
+      <div class="grid gap-[clamp(2.5rem,6vw,4rem)]">
+        {founders.map((founder, i) => (
+          <Reveal delay={1} client:visible>
+            <div
+              class={`grid items-start gap-8 md:grid-cols-[350px_1fr] md:gap-12 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}
+            >
+              <img
+                src={founder.image}
+                alt={founder.name}
+                width={350}
+                height={420}
+                class="w-full max-w-[350px] rounded-[22px] object-cover"
+              />
+              <div class="grid content-start gap-4">
+                <span class="font-mono text-xs uppercase tracking-[0.14em] text-brand">{founder.role}</span>
+                <h3 class="text-3xl leading-[1.05]">Hi, I&rsquo;m {founder.name}</h3>
+                {founder.bio.map((paragraph) => (
+                  <p class="leading-relaxed text-muted-foreground max-w-[65ch]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  {/* The IndieTribe */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <SectionHead
+          eyebrow="04 — The IndieTribe"
+          title="A little chaotic, a lot passionate. Somehow it clicks."
+          lead="Designers, editors, writers, strategists and developers — each one bringing something unique to the mix. We work across roles, but more than that, we're a mix of personalities:"
+        />
+      </Reveal>
+      <div class="grid grid-cols-1 gap-px overflow-hidden rounded-[22px] border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        {tribeNotes.map((note, i) => (
+          <Reveal delay={(i % 3) as 0 | 1 | 2} className="h-full" client:visible>
+            <div class="grid h-full content-start gap-2 bg-card p-[clamp(1.4rem,3.4vw,2rem)]">
+              <span class="font-mono text-xs tracking-[0.14em] text-brand">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p class="text-base text-muted-foreground">{note}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+      <Reveal className="mt-10 max-w-[60ch]" client:visible>
+        <p class="text-base leading-relaxed text-muted-foreground">
+          And no matter how hectic the day is, <strong class="text-foreground">3 PM is sacred</strong>: we
+          pause, crowd around the coffee machine, and make our own espressos. A 10-minute therapy session where we
+          unplug, sip, chat and reset.
+        </p>
+      </Reveal>
+    </Container>
+  </section>
+
+  {/* Bigger than business */}
+  <section class="pb-[clamp(4.5rem,10vw,8.5rem)]">
+    <Container>
+      <Reveal client:visible>
+        <CtaBand
+          eyebrow="Bigger than business"
+
+          lead="We want to put Kurukshetra on the map as a place full of creativity, bold ideas, and standout content. Everything we build, we build with that vision in mind."
+          ctaLabel="Work with us"
+        >
+  <Fragment slot="title">
+              One dream we keep close: to rebrand
+              <br />
+              <AnimatedUnderline className="text-amber">our home city.</AnimatedUnderline>
+            </Fragment>
+</CtaBand>
+      </Reveal>
+    </Container>
+  </section>
+</Layout>
